@@ -1,59 +1,40 @@
 # Pokedev
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.8.
+Un pokédex de développeurs, construit avec Angular 22. Tous les devs sont fictifs.
 
-## Development server
+## Prérequis
 
-To start a local development server, run:
+- Node.js 22.22.3 ou plus, ou 24.15 ou plus
+- npm
 
-```bash
-ng serve
+## Commandes
+
+| Commande                               | Rôle                                               |
+| -------------------------------------- | -------------------------------------------------- |
+| `npm install`                          | Installer les dépendances                          |
+| `npx ng serve`                         | Serveur de développement sur http://localhost:4200 |
+| `npx ng test`                          | Tests unitaires Vitest en mode surveillance        |
+| `npx ng test --watch=false`            | Tests unitaires, exécution unique                  |
+| `npx ng test --watch=false --coverage` | Tests avec rapport de couverture                   |
+| `npx ng lint`                          | Analyse statique avec angular-eslint               |
+| `npx ng build`                         | Build de production dans `dist/pokedev/browser`    |
+
+## Architecture
+
+```text
+public/data/devs.json   les données du pokédex
+
+src/app/
+├── domain/        modèle et règles métier : aucune dépendance Angular
+├── core/          services transverses
+│   ├── data/          chargement, validation et ajout des devs
+│   ├── http/          intercepteur et indicateur de chargement
+│   ├── navigation/    gardes et resolver de routes
+│   ├── storage/       signal persisté dans le localStorage
+│   └── team/          l'équipe de l'utilisateur
+├── features/      une page par dossier : dex, detail, team, create, not-found
+├── shared/        composants d'interface, directive et pipes réutilisables
+└── testing/       données de test
+
+
 ```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

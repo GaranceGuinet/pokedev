@@ -1,0 +1,39 @@
+form {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 42rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.types {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+fieldset {
+  display: grid;
+  gap: 1rem;
+}
+
+input,
+select,
+textarea,
+button {
+  font: inherit;
+}
+
+.error {
+  margin: 0;
+  color: crimson;
+}
